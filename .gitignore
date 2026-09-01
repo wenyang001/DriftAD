@@ -1,0 +1,41 @@
+# checkpoints / caches / logs
+code/ckpt/
+code/cache/
+code/wandb/
+code/log_rest/
+code/nohup.out
+*.pt
+*.pth
+*.pkl
+*.log
+*.csv
+
+# datasets & pretrained weights (downloaded separately)
+data/*
+!data/.gitkeep
+pretrained_ckpt/imagebind_ckpt/*
+!pretrained_ckpt/imagebind_ckpt/.gitkeep
+
+# outputs
+code/vis_anomaly/
+outputs/
+
+# python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+build/
+dist/
+.ipynb_checkpoints/
+
+# env / editors
+.venv/
+venv/
+.env
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.DS_Store
