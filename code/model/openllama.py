@@ -294,8 +294,8 @@ def encode_text_with_prompt_ensemble(model, obj, device, use_disk_cache=False, d
         embedding = _compute_single_class_embedding(model, class_name, device)
         text_embeddings_cache[cache_key] = embedding
 
-        # 保存到磁盘
-        if disk_cache:
+        # 保存到磁盘（仅主进程写，避免多卡并发写同一文件产生 race condition）
+        if disk_cache and ((not dist.is_initialized()) or dist.get_rank() == 0):
             disk_cache.set(key_name, embedding)
 
         embeddings_list.append(embedding)
