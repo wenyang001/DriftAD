@@ -447,7 +447,6 @@ class OpenLLAMAPEFTModel(nn.Module):
         if not isinstance(image_tensors, list):
             image_tensors = [image_tensors]
         stacked_images = torch.stack(image_tensors, dim=0).to(self.device)
-        stacked_images = self._prepare_vision_tensor(stacked_images)
         inputs = {ModalityType.VISION: stacked_images}
         inputs = {key: inputs[key].to(torch.float32) for key in inputs}
         with torch.no_grad():
